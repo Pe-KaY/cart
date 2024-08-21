@@ -16,7 +16,7 @@ export class ProductCardComponent {
 
   quantity: number = 1;
 
-  isAdded: boolean = false
+  isAdded: boolean = false;
 
   // check if item is in cart
   ngOnInit() {
@@ -26,14 +26,21 @@ export class ProductCardComponent {
       ? true
       : false;
 
-      
+    this.checkItemInCart();
   }
 
   // checks if item is still in cart
-  
+  checkItemInCart() {
+    this.cartItems.getCart().subscribe((cartItems: any[]) => {
+      this.isAdded = cartItems.some(
+        (item: any) => item.name === this.product.name
+      );
+    });
+  }
+
   // add to cart
   addToCart(name: string, price: number) {
-    if(this.isAdded) return
+    if (this.isAdded) return;
     this.cartItems.addToCart(name, price);
     this.isAdded = this.cartItems.cart.some(
       (item: any) => item.name === this.product.name

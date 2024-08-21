@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject ,Observable} from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartItemsService {
 
-  constructor() { }
+  private cartUpdate = new BehaviorSubject<any[]>([]);
 
   cart: any[] = [];
   total: number = 0
@@ -22,9 +24,9 @@ export class CartItemsService {
     this.totalprice()
   }
 
-  removeFromCart(name:string) {
-    this.cart = this.cart.filter(item => item.name !== name);
-    this.totalprice()
+  // return observable of the cart whenever it changes
+  getCart(): Observable<any> {
+    return this.cartUpdate.asObservable();
   }
   
   addQuantity(name:string) {
@@ -50,6 +52,7 @@ export class CartItemsService {
   removeitem(name:string) {
     this.cart = this.cart.filter(item => item.name !== name);
     this.totalprice()
+    this.cartUpdate.next(this.cart)
   }
 
 }

@@ -16,4 +16,7 @@ export class CartComponent {
   removeItem(item: string) {
     this.cartItems.removeitem(item);
   }
+
+
+
 }
