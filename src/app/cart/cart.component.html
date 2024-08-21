@@ -1,0 +1,30 @@
+<div class="cartwrapper">
+  <h1>Your Cart ({{cartItems.cart.length}})</h1>
+  @if(cartItems.cart.length === 0) {
+
+  <figure>
+    <img
+      src="../../assets/images/illustration-empty-cart.svg"
+      alt="emtpy cart image"
+    />
+    <figcaption>
+      <p>Your added items will appear here</p>
+    </figcaption>
+  </figure>
+  } @else {
+  <div class="cartlistwrapper">
+    @for(item of cartItems.cart; track $index){
+      <app-items-in-cart [cartItem]="item" (remove)="removeItem($event)"></app-items-in-cart>
+    }
+  </div>
+  <div class="totalwrapper">
+    <p class="totaltext">Order Total </p>
+    <p class="totalnum">{{cartItems.total | currency}}</p>
+  </div>
+  <div class="deliverywrapper">
+    <img class="deliveryicon" src="../../assets/images/icon-carbon-neutral.svg" alt="carbon carbon-neutral icon" >
+    <p class="deliverytext">This is a <span>carbon-neutral</span> delivery</p>
+  </div>
+  <button>Confirm Order</button>
+  }
+</div>

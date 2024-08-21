@@ -1,0 +1,34 @@
+.container {
+  /* border: 2px solid red; */
+  background-color: var(--Rose-100);
+  min-height: 100vh;
+  display: flex;
+  font-family: "Red Hat Text", sans-serif;
+  padding: 3rem;
+}
+
+h1{
+  margin-bottom: 2rem;
+}
+/* products wrapper */
+.products-wrapper {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid blue; */
+}
+
+/* products (this is the container of cards)*/
+.products {
+  height: 100%;
+  /* border: 2px solid green; */
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(18rem,1fr ));
+}
+
+/* cart container */
+.cart-wrapper{
+  width: 30%;
+  /* border: 2px solid red; */
+}
