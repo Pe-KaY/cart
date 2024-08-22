@@ -12,20 +12,19 @@ import { CartItemsService } from '../services/cartItems/cart-items.service';
 export class ProductCardComponent {
   constructor(public cartItems: CartItemsService) {}
 
+  // product
   @Input() product!: any;
 
+  // quantity of item
   quantity: number = 1;
 
+  // check if item is in cart
   isAdded: boolean = false;
+
+  
 
   // check if item is in cart
   ngOnInit() {
-    this.isAdded = this.cartItems.cart.some(
-      (item: any) => item.name === this.product.name
-    )
-      ? true
-      : false;
-
     this.checkItemInCart();
   }
 
@@ -39,9 +38,9 @@ export class ProductCardComponent {
   }
 
   // add to cart
-  addToCart(name: string, price: number) {
+  addToCart(name: string, price: number, quantity: number, img: string) {
     if (this.isAdded) return;
-    this.cartItems.addToCart(name, price);
+    this.cartItems.addToCart(name, price, quantity, img);
     this.isAdded = this.cartItems.cart.some(
       (item: any) => item.name === this.product.name
     )

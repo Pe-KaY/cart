@@ -1,7 +1,14 @@
 <div class="card">
-  <figure>
+  <figure [style.outline]="isAdded ? '3px solid red' : 'none'">
     <img [src]="product.image.mobile" alt="product image" />
-    <div (click)="addToCart(product.name, product.price)" class="addtocart">
+    <div
+      [style.background-color]="isAdded ? '#C83B0E' : 'white'"
+      [style.color]="isAdded ? 'white' : 'red'"
+      (click)="
+        addToCart(product.name, product.price, quantity, product.image.mobile)
+      "
+      class="addtocart"
+    >
       @if(isAdded){
       <span (click)="decreaseQuantity()">
         <svg
@@ -15,7 +22,7 @@
         </svg>
       </span>
       {{ quantity }}
-      <span (click)="increaseQuantity()" >
+      <span (click)="increaseQuantity()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="10"
@@ -31,7 +38,8 @@
 
       } @else {
       <img src="../../assets/images/icon-add-to-cart.svg" alt="addtocart" />
-      Add to Cart }
+      <p class="gee">Add to Cart</p>
+      }
     </div>
   </figure>
   <div class="description">

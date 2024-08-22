@@ -1,7 +1,7 @@
 .container {
   /* border: 2px solid red; */
   background-color: var(--Rose-100);
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   font-family: "Red Hat Text", sans-serif;
   padding: 3rem;
@@ -31,4 +31,48 @@ h1{
 .cart-wrapper{
   width: 30%;
   /* border: 2px solid red; */
+}
+
+
+@media (max-width:928px) {
+  .products-wrapper{
+    width: 60%;
+  }
+  .cart-wrapper{
+    width: 40%;
+  }
+  .products{
+    grid-template-columns: repeat(auto-fit, minmax(15rem,1fr ));
+  }
+}
+
+@media (max-width:796px) {
+  .products-wrapper{
+    width: 50%;
+  }
+  .cart-wrapper{
+    width: 50%;
+  }
+  .products{
+    grid-template-columns: repeat(auto-fit, minmax(15rem,1fr ));
+  }
+  
+}
+
+@media (max-width:570px) {
+  .container{
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .products-wrapper{
+    width: 100%;
+  }
+  .cart-wrapper{
+    width: 100%;
+  }
+  .products{
+    grid-template-columns: repeat(auto-fit, minmax(15rem,1fr ));
+  }
+  
+  
 }

@@ -1,5 +1,5 @@
 <div class="cartwrapper">
-  <h1>Your Cart ({{cartItems.cart.length}})</h1>
+  <h1>Your Cart ({{ cartItems.cart.length }})</h1>
   @if(cartItems.cart.length === 0) {
 
   <figure>
@@ -14,17 +14,55 @@
   } @else {
   <div class="cartlistwrapper">
     @for(item of cartItems.cart; track $index){
-      <app-items-in-cart [cartItem]="item" (remove)="removeItem($event)"></app-items-in-cart>
+    <app-items-in-cart
+      [cartItem]="item"
+      (remove)="removeItem($event)"
+    ></app-items-in-cart>
     }
   </div>
   <div class="totalwrapper">
-    <p class="totaltext">Order Total </p>
-    <p class="totalnum">{{cartItems.total | currency}}</p>
+    <p class="totaltext">Order Total</p>
+    <p class="totalnum">{{ cartItems.total | currency }}</p>
   </div>
   <div class="deliverywrapper">
-    <img class="deliveryicon" src="../../assets/images/icon-carbon-neutral.svg" alt="carbon carbon-neutral icon" >
+    <img
+      class="deliveryicon"
+      src="../../assets/images/icon-carbon-neutral.svg"
+      alt="carbon carbon-neutral icon"
+    />
     <p class="deliverytext">This is a <span>carbon-neutral</span> delivery</p>
   </div>
-  <button>Confirm Order</button>
+  <button (click)="openModal()">Confirm Order</button>
+  }
+  <!-- Order Confirmation Modal -->
+  @if(modalOpen){
+
+  <div class="modalwrapper">
+    <div class="modal">
+      <img
+        class="checkedIcon"
+        src="../../assets/images/icon-order-confirmed.svg"
+        alt="checkmark"
+      />
+
+      <div class="confirmtextwrapp">
+        <h1 class="confirmheader">Order Confirmed</h1>
+        <p class="enjoytext">We hope you enjoy your food!</p>
+      </div>
+      <div class="summaryitemswrapp">
+        <div class="summarycartwrapp">
+          @for(item of cartItems.cart; track $index){
+
+          <app-summary-cart [item]="item"></app-summary-cart>
+          }
+        </div>
+        <div class="summarytotal">
+          <p class="totaltext">Order Total</p>
+          <p class="totalnum">{{cartItems.total | currency}}</p>
+        </div>
+      </div>
+      <button (click)="closeModal()">Start New Order</button>
+    </div>
+  </div>
   }
 </div>

@@ -32,7 +32,7 @@
 
 /* remove from cart icon */
 .removewarapper {
-  border: 2px solid red;
+  border: 2px solid var(--Rose-300);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,4 +44,15 @@
   font-weight: 800;
   color: white;
   cursor: pointer;
+}
+.removewarapper > svg > path {
+  fill: var(--Rose-300);
+}
+
+/* romve from cart icon hover */
+.removewarapper:hover{
+  border: 2px solid var(--Rose-500);
+}
+.removewarapper:hover > svg > path{
+  fill: var(--Rose-500);
 }

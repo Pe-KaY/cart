@@ -21,4 +21,16 @@ export class AppComponent {
   }
 
   products$!: Observable<any>;
+
+  // prevents scroll when modal is opened
+  modalOpen: boolean = false;
+
+  // modal opened
+  modalOpened() {
+    this.modalOpen = true;
+  }
+  // modal closed
+  modalClosed() {
+    this.modalOpen = false;
+  }
 }

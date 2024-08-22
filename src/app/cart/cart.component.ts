@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CartItemsService } from '../services/cartItems/cart-items.service';
 import { ItemsInCartComponent } from '../items-in-cart/items-in-cart.component';
+import { SummaryCartComponent } from '../summary-cart/summary-cart.component';
 import { CommonModule } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [ItemsInCartComponent,CommonModule],
+  imports: [ItemsInCartComponent,SummaryCartComponent,CommonModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 })
@@ -17,6 +20,21 @@ export class CartComponent {
     this.cartItems.removeitem(item);
   }
 
+  // emitters
+  @Output() modalOpened = new EventEmitter<boolean>()
+  @Output() modalClosed = new EventEmitter<boolean>()
 
+  modalOpen: boolean = false
+
+  openModal() {
+    this.modalOpen = true
+    this.modalOpened.emit(this.modalOpen)
+  }
+
+  closeModal() {
+    this.modalOpen = false
+    this.cartItems.clearCart()
+    this.modalClosed.emit(this.modalOpen)
+  }
 
 }

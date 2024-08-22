@@ -1,0 +1,11 @@
+<div class="container">
+  <img [src]="item.img" alt="item image">
+  <div class="productDetails">
+    <p>{{item.name}}</p>
+    <p class="prices">
+      <span class="quantity">{{item.quantity}}x</span>
+      <span class="price">&#64;{{item.price | currency}}.0</span>
+    </p>
+  </div>
+  <span class="total">{{item.quantity * item.price | currency}}</span>
+</div>

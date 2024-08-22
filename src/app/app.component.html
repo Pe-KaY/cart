@@ -1,5 +1,5 @@
 <div class="main">
-  <div class="container">
+  <div [style.overflow]="modalOpen ? 'hidden' : 'auto'" class="container">
     <div class="products-wrapper">
       <h1>Desserts</h1>
       <div class="products" *ngIf="products$">
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="cart-wrapper">
-      <app-cart></app-cart>
+      <app-cart (modalOpened)="modalOpened()" (modalClosed)="modalClosed()"></app-cart>
     </div>
   </div>
 </div>

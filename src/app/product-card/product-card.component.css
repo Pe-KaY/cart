@@ -13,10 +13,10 @@ figure {
   border-radius: 0.5rem;
   overflow: hidden;
 }
- figure > img{
+figure > img {
   width: 100%;
   height: 100%;
- }
+}
 /* cart button */
 .addtocart {
   background-color: white;
@@ -32,6 +32,17 @@ figure {
   justify-content: space-evenly;
   outline: 1px solid #928481;
   cursor: pointer;
+}
+.gee {
+  color: black;
+  transition: color 0.3s ease-in-out;
+}
+.addtocart:hover {
+  outline: 2px solid var(--Red);
+  color: var(--red);
+}
+.addtocart:hover .gee {
+  color: var(--Red);
 }
 
 /* product description */
@@ -60,8 +71,8 @@ figure {
   font-weight: 800;
 }
 
-span{
-  border: 2px solid red;
+span {
+  border: 2px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,7 +84,12 @@ span{
   font-weight: 800;
   color: white;
 }
-
-svg{
+span:hover {
+  background-color: white;
+}
+span:hover > svg {
   fill: #bf3d2a;
+}
+svg {
+  fill: white;
 }
