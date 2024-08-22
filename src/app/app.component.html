@@ -9,7 +9,7 @@
         ></app-product-card>
       </div>
     </div>
-    <div class="cart-wrapper">
+    <div [style.position]="modalOpen ? 'static' : 'sticky'" class="cart-wrapper">
       <app-cart (modalOpened)="modal($event)" (modalClosed)="modal($event)"></app-cart>
     </div>
   </div>

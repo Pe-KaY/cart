@@ -1,5 +1,4 @@
 .container {
-  /* border: 2px solid red; */
   background-color: var(--Rose-100);
   max-width: 1520px;
   height: 100vh;
@@ -22,7 +21,6 @@ h1 {
 /* products (this is the container of cards)*/
 .products {
   height: 100%;
-  /* border: 2px solid green; */
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
@@ -30,8 +28,15 @@ h1 {
 
 /* cart container */
 .cart-wrapper {
+  top: 0;
   width: 30%;
   /* border: 2px solid red; */
+}
+
+@media (max-width: 1238px) {
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
 }
 
 @media (max-width: 928px) {
@@ -42,16 +47,19 @@ h1 {
     width: 40%;
   }
   .products {
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
 }
 
 @media (max-width: 796px) {
+  .container{
+    flex-direction: column;
+  }
   .products-wrapper {
-    width: 50%;
+    width: 100%;
   }
   .cart-wrapper {
-    width: 50%;
+    width: 100%;
   }
   .products {
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
