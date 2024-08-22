@@ -1,5 +1,5 @@
 .cartwrapper {
-  /* border: 2px solid red; */
+  
   background-color: white;
   border-radius: 1rem;
   width: 80%;
@@ -91,6 +91,7 @@ button {
   border-radius: 100vw;
   cursor: pointer;
   transition: background-color .3s;
+  border: none;
 }
 button:hover {
   background-color: #952C0C;
@@ -171,6 +172,12 @@ button:hover {
     padding-top: 4rem;
   }
   .modal {
+    width: 100%;
+  }
+}
+
+@media (max-width: 527px) {
+  .cartwrapper{
     width: 100%;
   }
 }
