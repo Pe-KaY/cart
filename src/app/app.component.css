@@ -30,7 +30,7 @@ h1 {
 .cart-wrapper {
   top: 0;
   width: 30%;
-  /* border: 2px solid red; */
+  overflow-y: auto;
 }
 
 @media (max-width: 1238px) {
