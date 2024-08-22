@@ -12,6 +12,5 @@ import { CommonModule } from '@angular/common';
 export class SummaryCartComponent {
 
   @Input() item: any 
-  
  
 }

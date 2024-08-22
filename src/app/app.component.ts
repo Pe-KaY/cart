@@ -26,11 +26,11 @@ export class AppComponent {
   modalOpen: boolean = false;
 
   // modal opened
-  modalOpened() {
-    this.modalOpen = true;
-  }
-  // modal closed
-  modalClosed() {
+  modal(check: boolean) {
+    if (check) {
+      this.modalOpen = true;
+      return;
+    }
     this.modalOpen = false;
   }
 }

@@ -26,6 +26,16 @@ export class ProductCardComponent {
   // check if item is in cart
   ngOnInit() {
     this.checkItemInCart();
+    this.afterReload();
+    this.cartItems.totalprice();
+  }
+  // checks if item is in cart after reload
+  afterReload() {
+    this.cartItems.cart.forEach((item: any) => {
+      if (item.name === this.product.name) {
+        this.isAdded = true;
+      }
+    })
   }
 
   // checks if item is still in cart

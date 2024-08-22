@@ -5,10 +5,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CartItemsService {
+  // uses BehaviorSubject which will be used to notify subscribers when the cart changes
   private cartUpdate = new BehaviorSubject<any[]>([]);
 
-  cart: any[] = [];
+  // checks if the window object is defined
+  private isWindow:boolean = typeof window !== 'undefined'
+  cart: any[] = this.isWindow ? JSON.parse(localStorage.getItem('cart') || '[]') : []
   total: number = 0;
+  
 
   //  updates the cart total price
   totalprice() {
@@ -22,6 +26,7 @@ export class CartItemsService {
   addToCart(name: string, price: number, quantity: number = 1, img: string) {
     this.cart = [...this.cart, { name, price, quantity, img }];
     this.totalprice();
+    localStorage.setItem('cart',JSON.stringify(this.cart))
   }
 
   // return observable of the cart whenever it changes
@@ -38,6 +43,7 @@ export class CartItemsService {
       return item;
     });
     this.totalprice();
+    localStorage.setItem('cart',JSON.stringify(this.cart))
   }
 
   // reduces the quantity of an item
@@ -49,6 +55,7 @@ export class CartItemsService {
       return item;
     });
     this.totalprice();
+    localStorage.setItem('cart',JSON.stringify(this.cart))
   }
 
   // removes an item from the cart
@@ -56,6 +63,7 @@ export class CartItemsService {
     this.cart = this.cart.filter((item) => item.name !== name);
     this.totalprice();
     this.cartUpdate.next(this.cart);
+    localStorage.setItem('cart',JSON.stringify(this.cart))
   }
 
   // clears the cart
@@ -63,5 +71,6 @@ export class CartItemsService {
     this.cart = [];
     this.totalprice();
     this.cartUpdate.next(this.cart);
+    localStorage.removeItem('cart')
   }
 }
