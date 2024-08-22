@@ -28,10 +28,14 @@ figure {
   gap: 1rem;
   /* border: 1px solid red; */
 }
+figure:hover > img{
+  transform: scale(1.3);
+}
 img {
   width: 50%;
   margin: auto;
-  /* border: 1px solid green; */
+  transform: scale(1);
+  transition: transform .3s;
 }
 
 p {
