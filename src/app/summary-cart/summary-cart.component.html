@@ -4,7 +4,7 @@
     <p>{{item.name}}</p>
     <p class="prices">
       <span class="quantity">{{item.quantity}}x</span>
-      <span class="price">&#64;{{item.price | currency}}.0</span>
+      <span class="price">&#64; {{item.price | currency}}</span>
     </p>
   </div>
   <span class="total">{{item.quantity * item.price | currency}}</span>
