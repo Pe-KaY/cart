@@ -22,15 +22,30 @@ export class AppComponent {
 
   products$!: Observable<any>;
 
+  // checks if window object is defined to access local storage
+  isWindow: boolean = typeof window !== 'undefined';
+
   // prevents scroll when modal is opened
-  modalOpen: boolean = false;
+  modalOpen: boolean = this.isWindow
+    ? localStorage.getItem('modalOpen') === 'true'
+    : false;
+
+  storeModal() {
+    if (this.modalOpen) {
+      localStorage.setItem('modalOpen', JSON.stringify(this.modalOpen));
+      return;
+    }
+    localStorage.removeItem('modalOpen');
+  }
 
   // modal opened
   modal(check: boolean) {
     if (check) {
       this.modalOpen = true;
+      this.storeModal();
       return;
     }
+    this.storeModal();
     this.modalOpen = false;
   }
 }
